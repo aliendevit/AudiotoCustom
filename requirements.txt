@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+streamlit
+openai-whisper
+transformers
+torch
+pdfminer.six
+pymupdf
+tesserocr
+Pillow
+arabic_reshaper
+python-bidi
+scikit-learn
+python-docx
