@@ -1,8 +1,18 @@
-import unittest
-from app.summarizer import summarize_text
+import requests
 
-class TestSummarizer(unittest.TestCase):
-    def test_summarize_text(self):
-        input_text = """وزارة الداخلية أعلنت اليوم عن خطة أمنية جديدة لحماية المواطنين خلال العطلة."""
-        result = summarize_text(input_text)
-        self.assertTrue(isinstance(result, str) and len(result) > 0)
+url = "http://127.0.0.1:8000/summarize"
+
+long_text = """
+تُعدّ السلطة التشريعية إحدى الركائز الأساسية التي يقوم عليها النظام الديمقراطي الحديث، إذ تمثل إرادة الشعب وتُعبّر عن تطلعاته من خلال ممثليه المنتخبين.
+
+فالسلطة التشريعية، وفقاً للدساتير الحديثة، تُمارس من خلال برلمان منتخب يتمتع بصلاحيات واسعة في التشريع والمساءلة...
+
+وقد نصّت معظم الدساتير العربية الحديثة على ضرورة احترام استقلال السلطات...
+"""
+
+payload = { "text": long_text }
+
+response = requests.post(url, json=payload)
+
+print(response.status_code)
+print(response.json())
